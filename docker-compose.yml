@@ -1,0 +1,36 @@
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    ports: ["8025:8025", "1025:1025"]
+    environment:
+      MP_MAX_MESSAGES: 500
+
+  backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    environment:
+      # SQLite lives inside the container — no Postgres, no networking needed.
+      DATABASE_URL: "sqlite:////app/data/app.db"
+      SEED_ON_STARTUP: "true"
+      AUTH_ENABLED: "false"
+      ALLOWED_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174"
+      EMAIL_ENABLED: "true"
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
+      SMTP_USE_TLS: "false"
+      GMAIL_LOOKUP_ENABLED: "false"
+      WHATSAPP_ENABLED: "false"
+      TEAMS_ENABLED: "false"
+      SLACK_ENABLED: "false"
+    ports: ["8000:8000"]
+    volumes:
+      - backend_data:/app/data
+    depends_on:
+      mailpit:
+        condition: service_started
+
+volumes:
+  backend_data:

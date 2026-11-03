@@ -1,0 +1,28 @@
+{
+  "name": "voice-to-action-enterprise-agent-ui",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "typescript": "5.6.3",
+    "vite": "5.4.11",
+    "tailwindcss": "4.1.13",
+    "@tailwindcss/vite": "4.1.13"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "@tailwindcss/oxide@4.1.13": true
+  }
+}

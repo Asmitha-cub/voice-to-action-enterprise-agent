@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #e5e7eb; background: #07111f; }
+body { margin: 0; min-width: 320px; }
+button:disabled { opacity: .55; cursor: not-allowed; }
